@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.dist.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["esnext"],
+    "module": "commonjs",
+    "moduleResolution": "classic",
+    "outDir": "../build"
+  }
+}

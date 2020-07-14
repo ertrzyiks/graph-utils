@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+yarn lerna run build:dist
+#yarn lerna publish --contents build

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "downlevelIteration": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "baseUrl": "../src",
+    "suppressImplicitAnyIndexErrors": true,
+  },
+  "include": [
+    "../src"
+  ],
+  "exclude": [
+    "../**/*.spec.ts"
+  ]
+}

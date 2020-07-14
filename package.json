@@ -1,0 +1,12 @@
+{
+  "name": "@ertrzyiks/graph-utils-root",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "lerna": "^3.22.1"
+  }
+}
