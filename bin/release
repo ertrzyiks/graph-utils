@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
 yarn lerna run build:dist
-#yarn lerna publish --contents build
+yarn lerna version --no-push
+yarn lerna publish from-git --yes --contents build
