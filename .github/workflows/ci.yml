@@ -80,7 +80,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     needs: [install, unit_test]
     runs-on: ubuntu-latest
-
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -98,8 +99,10 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Add .npmrc
         run: echo "//registry:npmjs:org/:_authToken=\${NPM_TOKEN}" > .npmrc
+      - name: Debug .npmrc
+        run: ls -la
+      - name: Debug npm
+        run: npm whoami
       - name: Run release script
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: bin/release
 
