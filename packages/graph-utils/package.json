@@ -17,6 +17,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:ci": "CI=true jest",
     "clean:dist": "rm -fr ./build",
     "build:dist": "yarn clean:dist && tsc -p configs/tsconfig.dist.es5.json && tsc -p configs/tsconfig.dist.es6.json",
     "postbuild:dist": "yarn copy:static && yarn copy:modified",
