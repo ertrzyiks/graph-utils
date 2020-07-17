@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+set -e
+
+git config --global user.email "bot@ertrzyiks.me"
+git config --global user.name "Release bot"
+
 yarn lerna run build:dist
 yarn lerna version --no-push
 yarn lerna publish from-git --yes --contents build
