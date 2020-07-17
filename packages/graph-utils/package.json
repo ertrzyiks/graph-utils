@@ -1,6 +1,6 @@
 {
   "name": "@ertrzyiks/graph-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utilities to work with graphs",
   "main": "src/index.js",
   "author": "ertrzyiks <mateusz.derks@gmail.com>",
@@ -17,6 +17,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:ci": "CI=true jest",
     "clean:dist": "rm -fr ./build",
     "build:dist": "yarn clean:dist && tsc -p configs/tsconfig.dist.es5.json && tsc -p configs/tsconfig.dist.es6.json",
     "postbuild:dist": "yarn copy:static && yarn copy:modified",
