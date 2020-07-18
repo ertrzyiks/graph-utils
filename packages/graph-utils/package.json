@@ -22,7 +22,7 @@
     "build:dist": "yarn clean:dist && tsc -p configs/tsconfig.dist.es5.json && tsc -p configs/tsconfig.dist.es6.json",
     "postbuild:dist": "yarn copy:static && yarn copy:modified",
     "copy:modified": "node ./scripts/updatePackageJson.js",
-    "copy:static": "cp README.md build"
+    "copy:static": "cp README.md CHANGELOG.md build"
   },
   "publishConfig": {
     "access": "public"
