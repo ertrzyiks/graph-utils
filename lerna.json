@@ -13,7 +13,7 @@
       "conventionalCommits": true,
       "createRelease": "github",
       "yes": true,
-      "message": "chore(release): publish {version} [skip ci]"
+      "message": "chore(release): publish %s [skip ci]"
     }
   }
 }
