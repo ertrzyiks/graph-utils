@@ -3,7 +3,7 @@
 set -e
 
 git config --global user.email "bot@ertrzyiks.me"
-git config --global user.name "Release bot"
+git config --global user.name "Automateusz"
 
 yarn lerna version --no-push
 yarn lerna run build:dist
