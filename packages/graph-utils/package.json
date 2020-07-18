@@ -23,5 +23,8 @@
     "postbuild:dist": "yarn copy:static && yarn copy:modified",
     "copy:modified": "node ./scripts/updatePackageJson.js",
     "copy:static": "cp README.md build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
