@@ -12,7 +12,9 @@
       ],
       "conventionalCommits": true,
       "createRelease": "github",
-      "yes": true,
+      "yes": true
+    },
+    "version": {
       "message": "chore(release): publish %s [skip ci]"
     }
   }
