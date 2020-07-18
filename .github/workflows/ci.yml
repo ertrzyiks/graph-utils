@@ -98,7 +98,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Add .npmrc
-        run: echo "//registry:npmjs:org/:_authToken=\${NPM_TOKEN}" > .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       - name: Debug .npmrc
         run: ls -la
       - name: Debug npm
