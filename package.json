@@ -8,5 +8,9 @@
   ],
   "dependencies": {
     "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "start": "lerna run start --scope website --stream",
+    "build": "lerna run build --scope website --stream"
   }
 }
