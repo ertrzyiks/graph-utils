@@ -13,4 +13,4 @@ git push --follow-tags origin
 
 # Update website
 yarn lerna run build:dist --stream --scope website
-yarn lerna run deploy --stream--scope website
+yarn lerna run deploy --stream --scope website
