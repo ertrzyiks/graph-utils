@@ -18,6 +18,7 @@
     "gatsby-source-filesystem": "^2.3.14",
     "gatsby-transformer-remark": "^2.8.25",
     "gatsby-transformer-sharp": "^2.5.7",
+    "gh-pages": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-d3-graph": "^2.5.0",
@@ -29,13 +30,14 @@
   },
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "build:dist": "yarn build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gh-pages -d public"
   }
 }
