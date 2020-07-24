@@ -10,7 +10,3 @@ yarn lerna version --no-push
 yarn lerna run build:dist --stream --scope @ertrzyiks/graph-utils
 yarn lerna publish from-git --yes --contents build
 git push --follow-tags origin
-
-# Update website
-yarn lerna run build:dist --stream --scope website
-yarn lerna run deploy --stream --scope website
