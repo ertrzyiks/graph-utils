@@ -110,4 +110,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/website/public
+          user_name: 'Automateusz'
+          user_email: 'bot@ertrzyiks.me'
 
