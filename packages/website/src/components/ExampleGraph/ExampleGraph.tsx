@@ -1,33 +1,27 @@
-import React from 'react'
-import { Graph } from 'react-d3-graph'
+import React, { useLayoutEffect, useRef } from 'react'
+import * as vis from 'vis-network'
 
-export default function MyGraph() {
-  const myConfig = {
-    staticGraph: true,
-    nodeHighlightBehavior: false,
-    node: {
-      color: "lightgreen",
-      size: 300,
-      fontSize: 16
-    },
-    link: {
-      highlightColor: "lightblue",
-    },
-  }
+import { useDefaultConfig } from '../../graphConfig'
 
-  const data = {
-    nodes: [{ id: "Harry", x: 50, y: 50 }, { id: "Sally", x: 50, y: 100 }, { x: 50, y: 150, id: "Met" }],
-    links: [
-      { source: "Harry", target: "Sally" },
-      { source: "Harry", target: "Met" },
-    ],
-  }
+export default function ExampleGraph({ data }: { data: any }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  const defaultConfig = useDefaultConfig()
+
+  useLayoutEffect(() => {
+    if (!ref.current) {
+      return
+    }
+
+    let graph = new vis.Network(ref.current, data, {...defaultConfig})
+
+    return () => {
+      graph.destroy()
+    }
+  }, [ref, data])
+
 
   return (
-    <Graph
-      id="graph-id"
-      data={data}
-      config={myConfig}
-    />
+    <div ref={ref} style={{ height: 300 }} />
   )
 }

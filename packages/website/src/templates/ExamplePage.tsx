@@ -39,13 +39,6 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
     <Example title={pageContext.exampleName} sourceCode={pageContext.content}>
       <Component />
     </Example>
-
-    <ul>
-    {data.allFile.edges.map(({ node }: { node: any }) => (
-      <li>{node.name}</li>
-    ))}
-    </ul>
-
   </Layout>
 }
 

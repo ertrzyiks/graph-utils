@@ -14,7 +14,9 @@ export default function Example({
 }: ExampleProps) {
   return <div>
     <Typography variant='h5'>{title}</Typography>
-    <pre>{sourceCode}</pre>
-    {children}
+    <div>
+      <pre>{sourceCode}</pre>
+      {children}
+    </div>
   </div>
 }
