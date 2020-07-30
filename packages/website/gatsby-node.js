@@ -9,6 +9,15 @@ const { loadNodeContent } = require('gatsby-source-filesystem')
 
 const examplePagePath = path.resolve('src/templates/ExamplePage.tsx')
 
+const getMainContent = (content) => {
+  const result = content.match(/\/\/ <main>(.*)\/\/ <\/main>/s)
+  return result ? result[1].trim() : getFullContent(content)
+}
+
+const getFullContent = (content) => {
+  return content.replace('// <main>\n', '').replace('// </main>\n', '')
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -27,24 +36,25 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allFiles = examples.data.allFile.edges.map(edge => edge.node)
 
-  const defaultFILE = allFiles[0]
-  createPage({
-    path: `examples`,
-    component: examplePagePath,
-    context: {
-      exampleName: defaultFILE.name,
-      content: await loadNodeContent(defaultFILE)
-    }
-  })
+  const defaultFile = allFiles[0]
 
-  for (const file of allFiles) {
+  const createExample = async (path, file) => {
+    const content = await loadNodeContent(file)
+
     createPage({
-      path: `examples/${file.name}`,
+      path,
       component: examplePagePath,
       context: {
         exampleName: file.name,
-        content: await loadNodeContent(file)
+        content: getMainContent(content),
+        fullContent: getFullContent(content)
       }
     })
+  }
+
+  await createExample('examples', defaultFile)
+
+  for (const file of allFiles) {
+    await createExample(`examples/${file.name}`, file)
   }
 }
