@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.10 (2020-07-31)
+
+
+### Bug Fixes
+
+* bootstrap on CI ([ffdcdeb](https://github.com/ertrzyiks/graph-utils/commit/ffdcdeb4d5d852349b0599270983007964899783))
+
+
+
+
+
 ## 0.1.9 (2020-07-31)
 
 
