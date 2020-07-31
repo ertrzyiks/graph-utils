@@ -18,6 +18,10 @@ const getFullContent = (content) => {
   return content.replace('// <main>\n', '').replace('// </main>\n', '')
 }
 
+const slugify = (fileName) => {
+  return fileName.slice(3)
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -55,6 +59,6 @@ exports.createPages = async ({ graphql, actions }) => {
   await createExample('examples', defaultFile)
 
   for (const file of allFiles) {
-    await createExample(`examples/${file.name}`, file)
+    await createExample(`examples/${slugify(file.name)}`, file)
   }
 }

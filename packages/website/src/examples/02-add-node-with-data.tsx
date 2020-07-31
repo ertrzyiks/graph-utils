@@ -4,6 +4,7 @@ import { getAllNodeIds } from '@ertrzyiks/graph-utils'
 
 // <main>
 import { Graph, addNodeInPlace } from '@ertrzyiks/graph-utils'
+import Preview from "../components/Preview";
 
 interface NodeData {
   label: string
@@ -29,11 +30,14 @@ const AddNodesExample = () => {
       id,
       label: graph[id].label
     })),
-    edges: [{ from: '1', to: '2'}, { from: '2', to: '1'}]
+    edges: []
   }
 
   return (
-    <ExampleGraph data={data} />
+    <Preview
+      raw={graph}
+      visual={<ExampleGraph data={data} />}
+    />
   )
 }
 
