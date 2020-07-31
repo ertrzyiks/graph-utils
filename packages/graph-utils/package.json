@@ -1,6 +1,6 @@
 {
   "name": "@ertrzyiks/graph-utils",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Utilities to work with graphs",
   "main": "src/index.ts",
   "author": "ertrzyiks <mateusz.derks@gmail.com>",
