@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.11 (2020-07-31)
+
+
+### Bug Fixes
+
+* force local bootstrap ([079adaf](https://github.com/ertrzyiks/graph-utils/commit/079adaf23d76b0b2c210b913dd2e7d06da914780))
+
+
+
+
+
 ## 0.1.10 (2020-07-31)
 
 
