@@ -1,5 +1,7 @@
 import React from 'react'
 import ExampleGraph from '../components/ExampleGraph/ExampleGraph'
+import Grid from '@material-ui/core/Grid';
+import { getAllNodeIds } from '@ertrzyiks/graph-utils'
 
 // <main>
 import { Graph, addNodeInPlace } from '@ertrzyiks/graph-utils'
@@ -17,18 +19,25 @@ const init = () => {
 const AddNodesExample = () => {
   const graph = init()
 
-  const nodes = Object.keys(graph)
+  const ids = getAllNodeIds(graph)
 
   const data = {
-    nodes: nodes.map(id => ({
+    nodes: ids.map(id => ({
       id,
       label: id
     })),
-    edges: [{ from: '1', to: '2'}, { from: '2', to: '1'}]
+    edges: [{ from: '1', to: '2'}]
   }
 
   return (
-    <ExampleGraph data={data} />
+    <Grid container spacing={3}>
+      <Grid item xs={6}>
+        <pre>{JSON.stringify(graph, null, 2)}</pre>
+      </Grid>
+      <Grid item xs={6}>
+        <ExampleGraph data={data} />
+      </Grid>
+    </Grid>
   )
 }
 

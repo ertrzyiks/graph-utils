@@ -966,11 +966,6 @@
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
-"@ertrzyiks/graph-utils@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@ertrzyiks/graph-utils/-/graph-utils-0.0.6.tgz#34110888bcaf1236b6b93020bd41eb461355e7fd"
-  integrity sha512-nEHdqOnx53hP2y+7miUzDDvpauvIpDXnezTdHnjzrV//fH2m2m8kuUmLuLXlkNOKfjjiXwdt/ea8H/UsAFc1Hg==
-
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
