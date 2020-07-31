@@ -6,6 +6,9 @@
   "version": "independent",
   "useWorkspaces": true,
   "command": {
+    "bootstrap": {
+      "forceLocal": true
+    },
     "publish": {
       "ignoreChanges": [
         "*.md"
