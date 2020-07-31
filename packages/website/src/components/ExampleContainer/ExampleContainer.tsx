@@ -7,7 +7,7 @@ interface ExampleProps {
   children: ReactNode
 }
 
-export default function Example({
+export default function ExampleContainer({
   title,
   sourceCode,
   children

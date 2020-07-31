@@ -1,6 +1,6 @@
 import React from 'react'
-import ExampleGraph from '../components/ExampleGraph/ExampleGraph'
-import Grid from '@material-ui/core/Grid';
+import ExampleGraph from '../components/ExampleGraph'
+import Preview from '../components/Preview'
 import { getAllNodeIds } from '@ertrzyiks/graph-utils'
 
 // <main>
@@ -26,18 +26,14 @@ const AddNodesExample = () => {
       id,
       label: id
     })),
-    edges: [{ from: '1', to: '2'}]
+    edges: []
   }
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={6}>
-        <pre>{JSON.stringify(graph, null, 2)}</pre>
-      </Grid>
-      <Grid item xs={6}>
-        <ExampleGraph data={data} />
-      </Grid>
-    </Grid>
+    <Preview
+      raw={graph}
+      visual={<ExampleGraph data={data} />}
+    />
   )
 }
 

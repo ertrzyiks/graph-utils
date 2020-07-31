@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { graphql, Link } from 'gatsby'
 import SEO from "../components/seo"
 import { Typography, Drawer, List, ListItem, ListItemText, Divider } from '@material-ui/core'
-import Example from "../components/Example/Example"
+import ExampleContainer from "../components/ExampleContainer/ExampleContainer"
 import Layout from "../components/Layout"
 import examples from '../examples'
 
@@ -26,8 +26,8 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
       <Divider />
       <List>
         {data.allFile.edges.map(({ node }: { node: any }) => (
-          <ListItem component={Link} to={`/examples/${node.name}`} button key={node.name}>
-            <ListItemText primary={node.name} />
+          <ListItem component={Link} to={`/examples/${node.name.slice(3)}`} button key={node.name}>
+            <ListItemText primary={node.name.slice(3)} />
           </ListItem>
         ))}
       </List>
@@ -36,15 +36,15 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
     <SEO title="Page two" />
     <Typography variant='h2'>Example</Typography>
 
-    <Example title={pageContext.exampleName} sourceCode={pageContext.content}>
+    <ExampleContainer title={pageContext.exampleName} sourceCode={pageContext.content}>
       <Component />
-    </Example>
+    </ExampleContainer>
   </Layout>
 }
 
 export const pageQuery = graphql`
   query examplesByName {
-    allFile(filter: {sourceInstanceName: {eq: "examples"} }) {
+    allFile(filter: {sourceInstanceName: {eq: "examples"} }, sort: {fields: name}) {
       edges {
         node {
           name
