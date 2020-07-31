@@ -20,15 +20,15 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-v2-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Install dependencies
-        run: yarn lerna bootstrap
+      - name: Bootstrap lerna
+        run: yarn lerna bootstrap --force-local
 
   lint:
     name: 'Lint project'
@@ -44,9 +44,9 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-v2-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -68,9 +68,9 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-v2-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -94,9 +94,9 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-yarn-v2-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
