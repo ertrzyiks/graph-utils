@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.12 (2020-08-01)
+
+
+### Bug Fixes
+
+* remove flash of unstyled content ([#20](https://github.com/ertrzyiks/graph-utils/issues/20)) ([1842b8a](https://github.com/ertrzyiks/graph-utils/commit/1842b8ac48c0512135ae8d05b3e8a21eab1aa363))
+
+
+
+
+
 ## 0.1.11 (2020-07-31)
 
 
