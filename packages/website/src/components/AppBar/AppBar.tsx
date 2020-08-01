@@ -9,6 +9,9 @@ import { Link as GatsbyLink } from "gatsby"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
     root: {
       flexGrow: 1,
     },
@@ -22,11 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function LayoutAppBar({ title }: { title: string }) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link component={GatsbyLink} to='/' color="inherit">{title}</Link>
@@ -35,6 +38,7 @@ export default function LayoutAppBar({ title }: { title: string }) {
           <Button component={GatsbyLink} to='/examples' color="inherit">Examples</Button>
         </Toolbar>
       </AppBar>
+      <Toolbar />
     </div>
-  );
+  )
 }
