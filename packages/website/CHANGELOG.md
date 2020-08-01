@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.14 (2020-08-01)
+
+
+### Bug Fixes
+
+* sidebar appearance ([9748398](https://github.com/ertrzyiks/graph-utils/commit/97483984a2caa7eea2358b3436321c1325bb1a0b))
+
+
+
+
+
 ## 0.1.13 (2020-08-01)
 
 **Note:** Version bump only for package website
