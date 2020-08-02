@@ -22,6 +22,8 @@ export default function ExampleGraph({ data }: { data: any }) {
 
 
   return (
-    <div ref={ref} style={{ height: 300 }} />
+    <div style={{ height: '100%', maxHeight: 500, border: '1px solid #333333' }}>
+      <div ref={ref} style={{ height: 300 }} />
+    </div>
   )
 }
