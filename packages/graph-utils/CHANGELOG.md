@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.23 (2020-08-02)
+
+
+### Bug Fixes
+
+* manually bump version ([53665aa](https://github.com/ertrzyiks/graph-utils/commit/53665aa58363730174089233208681e1693510bb))
+
+
+
+
+
 ## 0.0.21 (2020-08-01)
 
 
