@@ -15,10 +15,17 @@ interface ExamplePageProps {
   location: string
 }
 
+const capitalize = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+const titleize = (text: string) => {
+  return capitalize(text.replace(/-/g, ' '))
+}
+
 export default function ExamplePage({ data, pageContext, location }: ExamplePageProps) {
   const Component = examples[pageContext.exampleName]
 
-  console.log(pageContext.exampleName)
   return <Layout>
     <Drawer
       variant="permanent"
@@ -33,7 +40,7 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
 
         {data.allFile.edges.map(({ node }: { node: any }) => (
           <ListItem component={Link} to={`/examples/${node.name.slice(3)}`} button key={node.name} selected={node.name === pageContext.exampleName}>
-            <ListItemText primary={node.name.slice(3)} />
+            <ListItemText primary={titleize(node.name.slice(3))} />
           </ListItem>
         ))}
       </List>

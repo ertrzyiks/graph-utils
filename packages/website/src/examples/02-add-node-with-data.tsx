@@ -16,7 +16,7 @@ addNodeInPlace(graph, { id: '2', label: 'Node #2' })
 addNodeInPlace(graph, { id: '3', label: 'Node #3' })
 // </main>
 
-const AddNodesExample = () => {
+const Example = () => {
   const ids = getAllNodeIds(graph)
 
   const data = {
@@ -35,4 +35,4 @@ const AddNodesExample = () => {
   )
 }
 
-export default AddNodesExample
+export default Example
