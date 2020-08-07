@@ -1,4 +1,4 @@
-import {ExtractNodeData, NodeId} from './types'
+import {ExtractNodeData, NodeId} from '../types'
 
 export function addNodeInPlace<Graph>(
   graph: Graph,

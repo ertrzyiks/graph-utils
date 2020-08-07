@@ -16,7 +16,7 @@
     "typescript": "^3.9.6"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "test:ci": "CI=true jest",
     "clean:dist": "rm -fr ./build",
     "build:dist": "yarn clean:dist && tsc -p configs/tsconfig.dist.es5.json && tsc -p configs/tsconfig.dist.es6.json",
