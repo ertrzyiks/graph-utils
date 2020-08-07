@@ -1,12 +1,12 @@
-import { addNodeInPlace, addEdgeInPlace, Graph } from './index'
+import { addNodeInPlace, Graph } from '../index'
 
-describe('graph', () => {
+describe('addNodeInPlace', () => {
   it('allows to add a simple node', () => {
     const graph: Graph = {}
     addNodeInPlace(graph, { id: '1'})
 
     expect(graph).toEqual({
-      1: { data: undefined, edges: {} }
+      1: { edges: {} }
     })
   })
 
@@ -16,8 +16,8 @@ describe('graph', () => {
     addNodeInPlace(graph, { id: '2' })
 
     expect(graph).toEqual({
-      1: { data: undefined, edges: {} },
-      2: { data: undefined, edges: {} }
+      1: { edges: {} },
+      2: { edges: {} }
     })
   })
 })

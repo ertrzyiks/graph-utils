@@ -1,4 +1,4 @@
-import {ExtractEdgeData, NodeId} from './types'
+import {ExtractEdgeData, NodeId} from '../types'
 
 export function addEdgeInPlace<Graph>(
   graph: Graph,
