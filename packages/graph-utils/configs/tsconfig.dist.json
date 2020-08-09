@@ -11,6 +11,7 @@
     "sourceRoot": "/",
     "baseUrl": "../src",
     "suppressImplicitAnyIndexErrors": true,
+    "moduleResolution": "Node",
     "declaration": true
   },
   "include": [

@@ -1,4 +1,7 @@
-import { addNodeInPlace, addEdgeInPlace, findTheClosestPaths, Graph } from '../index'
+import { addEdgeInPlace } from '../addEdgeInPlace'
+import { addNodeInPlace } from '../addNodeInPlace'
+import { Graph } from '../types'
+import { findClosestPaths } from './findClosestPaths'
 
 describe('findTheClosestPaths', () => {
   it('finds the closest paths in a simple graph', () => {
@@ -7,7 +10,7 @@ describe('findTheClosestPaths', () => {
     addNodeInPlace(graph, { id: '2'})
     addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
 
-    const results = findTheClosestPaths(graph, {
+    const results = findClosestPaths(graph, {
       from: '1',
       getDistance: edge => edge.weight
     })
@@ -38,7 +41,7 @@ describe('findTheClosestPaths', () => {
     addEdgeInPlace(graph, { from: '4', to: '5', weight: 6 })
     addEdgeInPlace(graph, { from: '1', to: '5', weight: 12 })
 
-    const results = findTheClosestPaths(graph, {
+    const results = findClosestPaths(graph, {
       from: '1',
       getDistance: edge => edge.weight
     })

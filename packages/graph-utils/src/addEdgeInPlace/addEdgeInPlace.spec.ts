@@ -1,4 +1,7 @@
-import { addNodeInPlace, addEdgeInPlace, Graph } from '../index'
+import { addEdgeInPlace } from '../addEdgeInPlace'
+import { Graph } from '../types'
+
+import { addNodeInPlace } from '../addNodeInPlace'
 
 describe('addNodeInPlace', () => {
   it('allows to add a simple edge', () => {

@@ -15,3 +15,12 @@ export type NodeType<NodeData, EdgeData> = NodeData & {
 export type Graph<NodeData extends BaseData = {}, EdgeData extends BaseData = {}> = {
   [index: string]: NodeType<NodeData, EdgeData>
 }
+
+export interface ClosestPathData {
+  [index: string]: { distance: number, previousNode: NodeId | null }
+}
+
+export interface ClosestPathResults {
+  from: NodeId,
+  data: ClosestPathData
+}

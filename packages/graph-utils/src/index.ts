@@ -1,6 +1,6 @@
 export * from './addNodeInPlace'
 export * from './addEdgeInPlace'
-export * from './findTheClosestPaths'
+export * from './findClosestPaths'
 export * from './getAllNodeIds'
 export * from './getNeighboursOf'
 export * from './types'

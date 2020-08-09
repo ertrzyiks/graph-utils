@@ -102,6 +102,9 @@ jobs:
       - name: Bootstrap lerna
         run: yarn lerna bootstrap --force-local
 
+      - name: Rebuild utils
+        run: yarn lerna run build:dist --stream --scope @ertrzyiks/graph-utils
+
       - name: Rebuild website
         run: yarn lerna run build:dist --stream --scope website
 
