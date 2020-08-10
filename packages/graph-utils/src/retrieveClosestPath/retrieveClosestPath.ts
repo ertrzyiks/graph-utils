@@ -1,9 +1,16 @@
 import { ClosestPathResults, NodeId } from '../types'
+import { assertNodeExists } from '../assertNodeExists'
 
 export function retrieveClosestPath(results: ClosestPathResults, { to }: { to: NodeId }) {
+  assertNodeExists(results.data, to)
+
   const data = results.data
-  const path = []
+  const path = [] as string[]
   let currentNode: string | null = to
+
+  if (!data[currentNode].previousNode) {
+    return path
+  }
 
   const max = Object.keys(data).length
   let i = 0
@@ -14,7 +21,7 @@ export function retrieveClosestPath(results: ClosestPathResults, { to }: { to: N
     i++
 
     if (i > max) {
-      break
+      throw new Error('Incorrect results! There is an infinite loop in the path.')
     }
   }
 
