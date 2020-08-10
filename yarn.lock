@@ -17876,10 +17876,10 @@ vis-data@^6.6.1:
   resolved "https://registry.yarnpkg.com/vis-data/-/vis-data-6.6.1.tgz#2aa52e46c305ad46bb7abe6e7634e2eecd743b15"
   integrity sha512-xmujDB2Dzf8T04rGFJ9OP4OA6zRVrz8R9hb0CVKryBrZRCljCga9JjSfgctA8S7wdZu7otDtUIwX4ZOgfV/57w==
 
-vis-network@^7.10.2:
-  version "7.10.2"
-  resolved "https://registry.yarnpkg.com/vis-network/-/vis-network-7.10.2.tgz#b318f1907cf006d9640c4c31a262e0782405a3cf"
-  integrity sha512-KDx2agbDnaiE0Bye4AcCRqTn5mxzDKhdUNpKkzSn0AOLBmdhNtPGjxAFluAmvFVyiSK5R6Q5KIWdLjeIMu/PAQ==
+vis-network@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/vis-network/-/vis-network-8.1.0.tgz#0533bd14b22c754a044d77ec768065fcbee731b3"
+  integrity sha512-h8uMYKKBLDGD20kGzxqCmT2X94rB0oP2OLbBBqG/4sAZXJ4Vhbe+dQQurRg54Xz4wb8R33H719ldEizhWE/NkQ==
 
 vm-browserify@^1.0.1:
   version "1.1.2"
