@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.24 (2020-08-10)
+
+
+### Bug Fixes
+
+* retrieveClosestPath return array for a single path ([#36](https://github.com/ertrzyiks/graph-utils/issues/36)) ([cc1e442](https://github.com/ertrzyiks/graph-utils/commit/cc1e44256224a06c072c4e36795148989d087a40))
+
+
+
+
+
 ## 0.0.23 (2020-08-02)
 
 
