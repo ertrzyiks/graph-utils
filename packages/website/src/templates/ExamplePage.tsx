@@ -9,22 +9,21 @@ import examples from '../examples'
 interface ExamplePageProps {
   data: any
   pageContext: {
-    exampleName: string
+    example: {
+      slug: string
+      title: string
+      mainContent: string
+      fullContent: string
+    }
     content: string
   }
   location: string
 }
 
-const capitalize = (text: string) => {
-  return text.charAt(0).toUpperCase() + text.slice(1)
-}
-
-const titleize = (text: string) => {
-  return capitalize(text.replace(/-/g, ' '))
-}
 
 export default function ExamplePage({ data, pageContext, location }: ExamplePageProps) {
-  const Component = examples[pageContext.exampleName]
+  const { example } = pageContext
+  const Component = examples[example.slug]
 
   return <Layout>
     <Drawer
@@ -38,9 +37,9 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
           <ListItemText primary='Basic examples' />
         </ListItem>
 
-        {data.allFile.edges.map(({ node }: { node: any }) => (
-          <ListItem component={Link} to={`/examples/${node.name.slice(3)}`} button key={node.name} selected={node.name === pageContext.exampleName}>
-            <ListItemText primary={titleize(node.name.slice(3))} />
+        {data.allExample.edges.map(({ node }: { node: any }) => (
+          <ListItem component={Link} to={`/examples/${node.slug}`} button key={node.title} selected={node.slug === example.slug}>
+            <ListItemText primary={node.title} />
           </ListItem>
         ))}
       </List>
@@ -49,18 +48,19 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
     <SEO title="Page two" />
     <Typography variant='h2'>Example</Typography>
 
-    <ExampleContainer title={pageContext.exampleName} sourceCode={pageContext.content}>
+    <ExampleContainer title={example.title} sourceCode={pageContext.example.mainContent}>
       <Component />
     </ExampleContainer>
   </Layout>
 }
 
 export const pageQuery = graphql`
-  query examplesByName {
-    allFile(filter: {sourceInstanceName: {eq: "examples"} }, sort: {fields: name}) {
+  query getAllExamples {
+    allExample(sort: {fields: position}) {
       edges {
         node {
-          name
+          title
+          slug  
         }
       }
     }
