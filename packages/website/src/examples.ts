@@ -5,11 +5,11 @@ import Example4 from './examples/04-add-edge-with-data'
 import Example5 from './examples/05-find-the-closest-path'
 
 const examples = {
-  '01-add-node': Example1,
-  '02-add-node-with-data': Example2,
-  '03-add-edge': Example3,
-  '04-add-edge-with-data': Example4,
-  '05-find-the-closest-path': Example5
+  'add-node': Example1,
+  'add-node-with-data': Example2,
+  'add-edge': Example3,
+  'add-edge-with-data': Example4,
+  'find-the-closest-path': Example5
 }
 
 export default examples

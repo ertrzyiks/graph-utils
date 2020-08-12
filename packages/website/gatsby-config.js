@@ -18,13 +18,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `examples`,
-        path: `${__dirname}/src/examples`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `readme`,
         path: `${__dirname}/../graph-utils/README.md`,
       },

@@ -7,6 +7,7 @@
 const path = require('path')
 const { loadNodeContent } = require('gatsby-source-filesystem')
 
+const { processExample } = require('./gatsby-node/exampleProcessing')
 const examplePagePath = path.resolve('src/templates/ExamplePage.tsx')
 
 const getMainContent = (content) => {
@@ -27,38 +28,62 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const examples = await graphql(`
     query loadAllExamples {
-      allFile(filter: {sourceInstanceName: {eq: "examples"}}) {
-        edges {
-          node {
-            name
-            absolutePath
-          }
+      allExample(sort: {fields: position}) {
+        nodes {
+          title
+          slug
+          mainContent
+          fullContent
         }
       }
     }
   `, { limit: 1000 })
 
-  const allFiles = examples.data.allFile.edges.map(edge => edge.node)
+  const allExample = examples.data.allExample.nodes
 
-  const defaultFile = allFiles[0]
+  const defaultExample = allExample[0]
 
-  const createExample = async (path, file) => {
-    const content = await loadNodeContent(file)
-
+  const createExample = async (path, example) => {
     createPage({
       path,
       component: examplePagePath,
       context: {
-        exampleName: file.name,
-        content: getMainContent(content),
-        fullContent: getFullContent(content)
+        example
       }
     })
   }
 
-  await createExample('examples', defaultFile)
+  await createExample('examples', defaultExample)
 
-  for (const file of allFiles) {
-    await createExample(`examples/${slugify(file.name)}`, file)
+  for (const example of allExample) {
+    await createExample(`examples/${example.slug}`, example)
   }
+}
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  const examples = await Promise.all([
+    '01-add-node.tsx',
+    '02-add-node-with-data.tsx',
+    '03-add-edge.tsx',
+    '04-add-edge-with-data.tsx',
+    '05-find-the-closest-path.tsx'
+  ].map(processExample))
+
+  examples
+    .forEach((example, index) => {
+      const node = {
+        slug: example.slug,
+        title: example.title,
+        rawContent: example.rawContent,
+        mainContent: example.mainContent,
+        fullContent: example.fullContent,
+        position: index,
+        id: createNodeId(`Example-${example.slug}`),
+        internal: {
+          type: 'Example',
+          contentDigest: createContentDigest(example),
+        },
+      }
+      actions.createNode(node)
+    })
 }
