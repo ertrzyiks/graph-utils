@@ -1,3 +1,6 @@
+/**
+ * @title Add node with data
+ */
 import React from 'react'
 import ExampleGraph from '../components/ExampleGraph/ExampleGraph'
 import { getAllNodeIds } from '@ertrzyiks/graph-utils'

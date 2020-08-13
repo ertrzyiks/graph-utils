@@ -5,23 +5,11 @@
  */
 
 const path = require('path')
-const { loadNodeContent } = require('gatsby-source-filesystem')
+const glob = require('glob')
 
 const { processExample } = require('./gatsby-node/exampleProcessing')
+const { processFunction } = require('./gatsby-node/functionProcessing')
 const examplePagePath = path.resolve('src/templates/ExamplePage.tsx')
-
-const getMainContent = (content) => {
-  const result = content.match(/\/\/ <main>(.*)\/\/ <\/main>/s)
-  return result ? result[1].trim() : getFullContent(content)
-}
-
-const getFullContent = (content) => {
-  return content.replace('// <main>\n', '').replace('// </main>\n', '')
-}
-
-const slugify = (fileName) => {
-  return fileName.slice(3)
-}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -31,6 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allExample(sort: {fields: position}) {
         nodes {
           title
+          description
           slug
           mainContent
           fullContent
@@ -60,23 +49,36 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 }
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
-  const examples = await Promise.all([
-    '01-add-node.tsx',
-    '02-add-node-with-data.tsx',
-    '03-add-edge.tsx',
-    '04-add-edge-with-data.tsx',
-    '05-find-the-closest-path.tsx'
-  ].map(processExample))
+const allFiles = (pattern) => {
+  return new Promise((resolve, reject) => {
+    glob(pattern, async (err, files) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(files)
+      }
+    })
+  })
+}
 
-  examples
-    .forEach((example, index) => {
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  const exampleFiles = await allFiles('src/examples/*.tsx')
+  const examples = await Promise.all(exampleFiles.map(filePath => path.basename(filePath)).map(processExample))
+
+  const relatedExamples = {}
+
+  const nodes = await Promise.all(examples
+    .map((example, index) => {
+      const { importedFunctions, ...exampleData } = example
+
+      importedFunctions.forEach(name => {
+        relatedExamples[name] = relatedExamples[name] || []
+        relatedExamples[name].push(exampleData.slug)
+      })
+
       const node = {
-        slug: example.slug,
-        title: example.title,
-        rawContent: example.rawContent,
-        mainContent: example.mainContent,
-        fullContent: example.fullContent,
+        ...exampleData,
+        related___NODE: importedFunctions.map(name => createNodeId(`Function-${name}`)),
         position: index,
         id: createNodeId(`Example-${example.slug}`),
         internal: {
@@ -84,6 +86,26 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
           contentDigest: createContentDigest(example),
         },
       }
-      actions.createNode(node)
+      return actions.createNode(node)
     })
+  )
+
+  const functionFiles = await allFiles('../graph-utils/src/**/*.ts')
+  const functions = await Promise.all(functionFiles.map(processFunction))
+
+  await Promise.all(functions
+    .flat()
+    .map(fnData => {
+      const node = {
+        ...fnData,
+        relatedExamples___NODE: (relatedExamples[fnData.name] || []).map(slug => createNodeId(`Example-${slug}`)),
+        id: createNodeId(`Function-${fnData.name}`),
+        internal: {
+          type: 'Function',
+          contentDigest: createContentDigest(fnData),
+        },
+      }
+      return actions.createNode(node)
+    })
+  )
 }

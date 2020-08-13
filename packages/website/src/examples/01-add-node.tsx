@@ -1,3 +1,9 @@
+/**
+ * Show how to create a node
+ *
+ * @title Add a new node to the graph
+ * @shortTitle Add node
+ */
 import React from 'react'
 import ExampleGraph from '../components/ExampleGraph'
 import Preview from '../components/Preview'
