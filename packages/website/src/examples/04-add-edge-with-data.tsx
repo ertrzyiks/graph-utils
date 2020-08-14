@@ -1,3 +1,6 @@
+/**
+ * @title Add edge with data
+ */
 import React from 'react'
 import ExampleGraph from '../components/ExampleGraph'
 import Preview from '../components/Preview'

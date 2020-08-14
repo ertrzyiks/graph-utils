@@ -11,6 +11,7 @@ interface ExamplePageProps {
   pageContext: {
     example: {
       slug: string
+      description: string
       title: string
       mainContent: string
       fullContent: string
@@ -38,17 +39,16 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
         </ListItem>
 
         {data.allExample.edges.map(({ node }: { node: any }) => (
-          <ListItem component={Link} to={`/examples/${node.slug}`} button key={node.title} selected={node.slug === example.slug}>
-            <ListItemText primary={node.title} />
+          <ListItem component={Link} to={`/examples/${node.slug}`} button key={node.slug} selected={node.slug === example.slug}>
+            <ListItemText primary={node.shortTitle} />
           </ListItem>
         ))}
       </List>
     </Drawer>
 
     <SEO title="Page two" />
-    <Typography variant='h2'>Example</Typography>
 
-    <ExampleContainer title={example.title} sourceCode={pageContext.example.mainContent}>
+    <ExampleContainer title={example.title} description={example.description} sourceCode={pageContext.example.mainContent}>
       <Component />
     </ExampleContainer>
   </Layout>
@@ -59,7 +59,7 @@ export const pageQuery = graphql`
     allExample(sort: {fields: position}) {
       edges {
         node {
-          title
+          shortTitle
           slug  
         }
       }

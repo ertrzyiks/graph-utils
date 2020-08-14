@@ -1,3 +1,6 @@
+/**
+ * @title Find the closest path
+ */
 import React, { useState } from 'react'
 import ExampleGraph from '../components/ExampleGraph'
 import Preview from '../components/Preview'

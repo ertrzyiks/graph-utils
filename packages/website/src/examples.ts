@@ -5,6 +5,7 @@ import Example4 from './examples/04-add-edge-with-data'
 import Example5 from './examples/05-find-the-closest-path'
 
 const examples = {
+  'test': Example1,
   'add-node': Example1,
   'add-node-with-data': Example2,
   'add-edge': Example3,
