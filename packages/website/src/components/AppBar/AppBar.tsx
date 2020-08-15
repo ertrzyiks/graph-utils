@@ -35,6 +35,7 @@ export default function LayoutAppBar({ title }: { title: string }) {
             <Link component={GatsbyLink} to='/' color="inherit">{title}</Link>
           </Typography>
           <Button component={GatsbyLink} to='/'color="inherit">Home</Button>
+          <Button component={GatsbyLink} to='/api'color="inherit">API</Button>
           <Button component={GatsbyLink} to='/examples' color="inherit">Examples</Button>
         </Toolbar>
       </AppBar>

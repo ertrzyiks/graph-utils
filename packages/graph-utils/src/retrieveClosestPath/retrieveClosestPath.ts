@@ -1,7 +1,12 @@
 import { ClosestPathResults, NodeId } from '../types'
 import { assertNodeExists } from '../assertNodeExists'
 
-export function retrieveClosestPath(results: ClosestPathResults, { to }: { to: NodeId }) {
+interface ClosestPathParams {
+  to: NodeId
+}
+
+export function retrieveClosestPath(results: ClosestPathResults, params: ClosestPathParams): NodeId[] {
+  const  { to } = params
   assertNodeExists(results.data, to)
 
   const data = results.data

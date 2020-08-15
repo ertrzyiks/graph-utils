@@ -3,12 +3,13 @@ import { getAllNodeIds } from '../getAllNodeIds'
 import { assertNodeExists } from '../assertNodeExists'
 import { getNeighboursOf } from '../getNeighboursOf'
 
-interface FindTheClosestPathsOpts<Graph> {
+interface FindClosestPathsParams<Graph> {
   from: NodeId
   getDistance(edge: ExtractEdgeData<Graph>): number
 }
 
-export function findClosestPaths<Graph>(graph: Graph, { from, getDistance }: FindTheClosestPathsOpts<Graph>) {
+export function findClosestPaths<Graph>(graph: Graph, params: FindClosestPathsParams<Graph>) {
+  const { from, getDistance } = params
   assertNodeExists(graph, from)
 
   const unvisited = getAllNodeIds(graph)
