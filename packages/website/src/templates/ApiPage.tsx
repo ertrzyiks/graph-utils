@@ -1,14 +1,27 @@
-import React, {useLayoutEffect, useRef} from 'react'
-import { graphql, Link } from 'gatsby'
+import React from 'react'
+import { graphql } from 'gatsby'
 import SEO from "../components/seo"
-import { Box, Card, CardContent, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import Layout from "../components/Layout"
-import Prism from "../vendor/prism";
+import ApiFunction from '../components/ApiFunction'
 
+interface JsDoc {
+  comment: string
+  tags: {
+    comment: string
+    tagName: string
+    name: string
+  }[]
+}
 interface FunctionType {
   name: string
   slug: string
   signature: string
+  params: {
+    name: string
+    type: string
+  }[]
+  jsDoc: JsDoc | null
 }
 
 interface ExamplePageProps {
@@ -18,27 +31,6 @@ interface ExamplePageProps {
     }
   }
 }
-
-const ApiFunction = ({ data }: { data: FunctionType }) => {
-  const ref = useRef<HTMLPreElement>(null)
-  useLayoutEffect(() => {
-    if (ref.current) {
-      Prism.highlightElement(ref.current)
-    }
-  }, [ref])
-
-  return (
-    <Card>
-      <CardContent>
-        <span id={data.slug}/>
-        <Typography variant='h4'>{data.name}</Typography>
-
-        <pre ref={ref} className='language-typescript'>{data.signature}</pre>
-      </CardContent>
-    </Card>
-  )
-}
-
 
 export default function ApiPage({ data }: ExamplePageProps) {
   const functions = data.allFunction.nodes
@@ -61,6 +53,10 @@ export const pageQuery = graphql`
         name
         signature
         slug
+        params {
+          name
+          type
+        }
         jsDoc {
           comment
           tags {
