@@ -1,9 +1,8 @@
 const ts = require('typescript')
 
 const printer = ts.createPrinter({
-  newLine: ts.NewLineKind.LineFeed,
   removeComments: true,
-  omitTrailingSemicolon: false
+  omitTrailingSemicolon: true
 })
 
 const analyzeExportedFn = (node) => {
@@ -24,10 +23,22 @@ const analyzeExportedFn = (node) => {
     }
   }
 
+  // console.log(node)
+
+  const name = node.name.getText()
+  const params = node.parameters.map(param => {
+    return param.name.escapedText
+  })
+
   return {
-    name: node.name.getText(),
+    name,
+    returnType: node.type ? printer.printNode(ts.EmitHint.Unspecified, node.type, node.parent) : undefined,
+    params: node.parameters.map(param => ({
+      name: printer.printNode(ts.EmitHint.Unspecified, param.name, node.parent),
+      type: printer.printNode(ts.EmitHint.Unspecified, param.type, node.parent)
+    })),
     jsDoc,
-    signature: printer.printNode(ts.EmitHint.Unspecified, node, node.parent)
+    signature: `${node.name.getText()}(${params.join(', ')})`
   }
 }
 

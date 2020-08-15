@@ -6,10 +6,12 @@
 
 const path = require('path')
 const glob = require('glob')
+const slugify = require('slugify')
 
 const { processExample } = require('./gatsby-node/exampleProcessing')
 const { processFunction } = require('./gatsby-node/functionProcessing')
 const examplePagePath = path.resolve('src/templates/ExamplePage.tsx')
+const apiPagePath = path.resolve('src/templates/ApiPage.tsx')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -47,6 +49,11 @@ exports.createPages = async ({ graphql, actions }) => {
   for (const example of allExample) {
     await createExample(`examples/${example.slug}`, example)
   }
+
+  createPage({
+    path: '/api',
+    component: apiPagePath
+  })
 }
 
 const allFiles = (pattern) => {
@@ -67,7 +74,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
 
   const relatedExamples = {}
 
-  const nodes = await Promise.all(examples
+  await Promise.all(examples
     .map((example, index) => {
       const { importedFunctions, ...exampleData } = example
 
@@ -98,6 +105,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
     .map(fnData => {
       const node = {
         ...fnData,
+        slug: slugify(fnData.name),
         relatedExamples___NODE: (relatedExamples[fnData.name] || []).map(slug => createNodeId(`Example-${slug}`)),
         id: createNodeId(`Function-${fnData.name}`),
         internal: {

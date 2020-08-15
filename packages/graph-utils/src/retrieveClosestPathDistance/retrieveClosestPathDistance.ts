@@ -1,5 +1,10 @@
-import { ClosestPathResults, NodeId } from "../types";
+import { ClosestPathResults, NodeId } from '../types'
 
-export function retrieveClosestPathDistance(results: ClosestPathResults, { to }: { to: NodeId }) {
+interface ClosestPathDistanceParams {
+  to: NodeId
+}
+
+export function retrieveClosestPathDistance(results: ClosestPathResults, params: ClosestPathDistanceParams) {
+  const { to } = params
   return results.data[to].distance
 }

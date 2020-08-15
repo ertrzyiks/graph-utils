@@ -1,8 +1,10 @@
 import {ExtractEdgeData, NodeId} from '../types'
 
+type EdgeDefinitionOf<Graph> = { from: NodeId, to: NodeId } & ExtractEdgeData<Graph>
+
 export function addEdgeInPlace<Graph>(
   graph: Graph,
-  edge: { from: NodeId, to: NodeId } & ExtractEdgeData<Graph>
+  edge: EdgeDefinitionOf<Graph>
 ) {
   const { from, to, ...data } = edge
   const node = graph[from]
