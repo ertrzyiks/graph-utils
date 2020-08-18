@@ -13,17 +13,17 @@ const analyzeExportedFn = (node) => {
 
   if (node.jsDoc && node.jsDoc.length > 0) {
     const doc = node.jsDoc[0]
+    console.log(doc.tags.map(tag => tag.typeExpression && tag.typeExpression.type.getText()))
     jsDoc = {
       comment: doc.comment,
       tags: doc.tags.map(tag => ({
         tagName: tag.tagName.getText(),
-        name: tag.name.getText(),
+        name: tag.name ? tag.name.getText() : undefined,
+        type: tag.typeExpression ? tag.typeExpression.type.getText() : undefined,
         comment: tag.comment || ''
       }))
     }
   }
-
-  // console.log(node)
 
   const name = node.name.getText()
   const params = node.parameters.map(param => {
