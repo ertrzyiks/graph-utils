@@ -1,11 +1,11 @@
 import { addEdgeInPlace } from '../addEdgeInPlace'
 import { addNodeInPlace } from '../addNodeInPlace'
-import { Graph } from '../types'
+import { createGraph } from '../createGraph'
 import { findClosestPaths } from './findClosestPaths'
 
 describe('findTheClosestPaths', () => {
   it('finds the closest paths in a simple graph', () => {
-    const graph: Graph<{}, { weight: number }> = {}
+    const graph = createGraph<{}, { weight: number }>()
     addNodeInPlace(graph, { id: '1'})
     addNodeInPlace(graph, { id: '2'})
     addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
@@ -27,7 +27,7 @@ describe('findTheClosestPaths', () => {
   })
 
   it('finds the closest paths in a complex graph', () => {
-    const graph: Graph<{}, { weight: number }> = {}
+    const graph = createGraph<{}, { weight: number }>()
     addNodeInPlace(graph, { id: '1'})
     addNodeInPlace(graph, { id: '2'})
     addNodeInPlace(graph, { id: '3'})

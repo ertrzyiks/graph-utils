@@ -1,21 +1,20 @@
 export type NodeId = string
-export type BaseData = {[key: string]: any}
+export type BaseData = Record<string, any>
 
-export type ExtractNodeData<P> = P extends Graph<infer NodeData, infer EdgeData> ? NodeData : never
-export type ExtractEdgeData<P> = P extends Graph<infer NodeData, infer EdgeData> ? EdgeData : never
-
-export type NodeOf<Graph> = { id: NodeId } & ExtractNodeData<Graph>
-
-export type NodeType<NodeData, EdgeData> = NodeData & {
+export type NodeType<NodeData, EdgeData> = {
+  id: NodeId
+  data: NodeData
   edges: {
-    [index: string]: EdgeData & {
-      exists: true
+    [index: string]: {
+      data: EdgeData
     }
   }
 }
 
 export type Graph<NodeData extends BaseData = {}, EdgeData extends BaseData = {}> = {
-  [index: string]: NodeType<NodeData, EdgeData>
+  nodes: {
+    [index: string]: NodeType<NodeData, EdgeData>
+  }
 }
 
 export interface ClosestPathData {

@@ -10,9 +10,9 @@ import Preview from '../components/Preview'
 import { getAllNodeIds } from '@ertrzyiks/graph-utils'
 
 // <main>
-import { Graph, addNodeInPlace } from '@ertrzyiks/graph-utils'
+import { createGraph, addNodeInPlace } from '@ertrzyiks/graph-utils'
 
-const graph: Graph = {}
+const graph = createGraph()
 addNodeInPlace(graph, { id: '1' })
 addNodeInPlace(graph, { id: '2' })
 addNodeInPlace(graph, { id: '3' })

@@ -18,8 +18,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "sourceRoot": "/",
-    "baseUrl": "./src",
-    "suppressImplicitAnyIndexErrors": true
+    "baseUrl": "./src"
   },
   "include": [
     "src"

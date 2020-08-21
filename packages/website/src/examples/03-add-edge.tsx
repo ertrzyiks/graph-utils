@@ -7,9 +7,9 @@ import Preview from '../components/Preview'
 import { getAllNodeIds } from '@ertrzyiks/graph-utils'
 
 // <main>
-import { Graph, addNodeInPlace, addEdgeInPlace } from '@ertrzyiks/graph-utils'
+import { createGraph, addNodeInPlace, addEdgeInPlace } from '@ertrzyiks/graph-utils'
 
-const graph: Graph = {}
+const graph = createGraph()
 addNodeInPlace(graph, { id: '1' })
 addNodeInPlace(graph, { id: '2' })
 addNodeInPlace(graph, { id: '3' })
@@ -27,7 +27,7 @@ const Example = () => {
       id,
       label: id
     })),
-    edges: ids.map(id => Object.keys(graph[id].edges).map(to => ({ from: id, to }))).flat(1)
+    edges: ids.map(id => Object.keys(graph.nodes[id].edges).map(to => ({ from: id, to }))).flat(1)
   }
 
   return (

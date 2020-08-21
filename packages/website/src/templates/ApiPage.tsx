@@ -38,8 +38,8 @@ export default function ApiPage({ data }: ExamplePageProps) {
   return <Layout>
     <SEO title='API' />
 
-    {functions.map(fn => (
-      <Box m={5}>
+    {functions.map((fn, index) => (
+      <Box key={index} m={5}>
         <ApiFunction data={fn} />
       </Box>
     ))}
