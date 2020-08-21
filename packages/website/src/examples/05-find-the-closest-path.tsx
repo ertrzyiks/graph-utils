@@ -4,13 +4,13 @@
 import React, { useState } from 'react'
 import ExampleGraph from '../components/ExampleGraph'
 import Preview from '../components/Preview'
-import { getAllNodeIds, Graph, addNodeInPlace, addEdgeInPlace } from '@ertrzyiks/graph-utils'
+import { getAllNodeIds, createGraph, addNodeInPlace, addEdgeInPlace } from '@ertrzyiks/graph-utils'
 
 interface EdgeData {
   weight: number
 }
 
-const graph: Graph<{}, EdgeData> = {}
+const graph = createGraph<{}, EdgeData>()
 addNodeInPlace(graph, { id: '1'})
 addNodeInPlace(graph, { id: '2'})
 addNodeInPlace(graph, { id: '3'})
@@ -59,7 +59,7 @@ const Example = () => {
         return node
       }),
     edges: ids
-      .map(id => Object.keys(graph[id].edges).map(to => ({ from: id, to, label: `${graph[id].edges[to].weight}` }))).flat(1)
+      .map(id => Object.keys(graph.nodes[id].edges).map(to => ({ from: id, to, label: `${graph.nodes[id].edges[to].data.weight}` }))).flat(1)
       .map(edge => {
         if (highlighted) {
           const indexOfFrom = highlighted?.indexOf(edge.from)

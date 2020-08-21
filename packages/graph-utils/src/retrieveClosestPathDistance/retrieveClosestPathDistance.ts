@@ -1,10 +1,18 @@
-import { ClosestPathResults, NodeId } from '../types'
+import { ClosestPathResults, NodeId, assertResultForNodeExists } from '../index'
 
-interface ClosestPathDistanceParams {
+interface Params {
   to: NodeId
 }
 
-export function retrieveClosestPathDistance(results: ClosestPathResults, params: ClosestPathDistanceParams) {
-  const { to } = params
+/**
+ *
+ * @signature retrieveClosestPathDistance(results, params)
+ * @param {ClosestPathResults} results A result object returned by findClosestPath function.
+ * @param {Params} params
+ * @param {NodeId} params.to
+ * @return {number}
+ */
+export function retrieveClosestPathDistance(results: ClosestPathResults, { to }: Params) {
+  assertResultForNodeExists(results, to)
   return results.data[to].distance
 }

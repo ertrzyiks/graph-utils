@@ -13,7 +13,6 @@ const analyzeExportedFn = (node) => {
 
   if (node.jsDoc && node.jsDoc.length > 0) {
     const doc = node.jsDoc[0]
-    console.log(doc.tags.map(tag => tag.typeExpression && tag.typeExpression.type.getText()))
     jsDoc = {
       comment: doc.comment,
       tags: doc.tags.map(tag => ({
@@ -30,6 +29,8 @@ const analyzeExportedFn = (node) => {
     return param.name.escapedText
   })
 
+  const signatureDoc = jsDoc && jsDoc.tags.find(tag => tag.tagName === 'signature')
+
   return {
     name,
     returnType: node.type ? printer.printNode(ts.EmitHint.Unspecified, node.type, node.parent) : undefined,
@@ -38,7 +39,7 @@ const analyzeExportedFn = (node) => {
       type: printer.printNode(ts.EmitHint.Unspecified, param.type, node.parent)
     })),
     jsDoc,
-    signature: `${node.name.getText()}(${params.join(', ')})`
+    signature: signatureDoc ? signatureDoc.comment : `${node.name.getText()}(${params.join(', ')})`
   }
 }
 

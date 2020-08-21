@@ -1,18 +1,17 @@
-import { addEdgeInPlace } from '../addEdgeInPlace'
-import { Graph } from '../types'
+import { addEdgeInPlace, addNodeInPlace, createGraph } from '../index'
 
-import { addNodeInPlace } from '../addNodeInPlace'
-
-describe('addNodeInPlace', () => {
+describe('addEdgeInPlace', () => {
   it('allows to add a simple edge', () => {
-    const graph: Graph = {}
-    addNodeInPlace(graph, { id: '1'})
+    const graph = createGraph()
+    addNodeInPlace(graph, { id: '1' })
     addNodeInPlace(graph, { id: '2'})
-    addEdgeInPlace(graph, { from: '1', to: '2'})
+    addEdgeInPlace(graph, { from: '1', to: '2' })
 
     expect(graph).toEqual({
-      1: { edges: { 2: {}} },
-      2: { edges: {} }
+      nodes: {
+        1: {id: '1', data: {}, edges: {2: {data: {}}}},
+        2: {id: '2', data: {}, edges: {}}
+      }
     })
   })
 })

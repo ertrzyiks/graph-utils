@@ -1,14 +1,10 @@
-import { retrieveClosestPath } from './retrieveClosestPath'
-import { Graph } from '../types'
-import { addNodeInPlace } from '../addNodeInPlace'
-import { addEdgeInPlace } from '../addEdgeInPlace'
-import { findClosestPaths } from '../findClosestPaths'
+import { retrieveClosestPath, addNodeInPlace, addEdgeInPlace, findClosestPaths, createGraph } from '../index'
 
 describe('retrieveClosestPath', () => {
   it('allows to retrieve a simple path', () => {
-    const graph: Graph<{}, { weight: number }> = {}
-    addNodeInPlace(graph, { id: '1'})
-    addNodeInPlace(graph, { id: '2'})
+    const graph = createGraph<{}, { weight: number }>()
+    addNodeInPlace(graph, { id: '1' })
+    addNodeInPlace(graph, { id: '2' })
     addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
 
     const results = findClosestPaths(graph, {
@@ -21,10 +17,10 @@ describe('retrieveClosestPath', () => {
   })
 
   it('allows to retrieve a complex path', () => {
-    const graph: Graph<{}, { weight: number }> = {}
-    addNodeInPlace(graph, { id: '1'})
-    addNodeInPlace(graph, { id: '2'})
-    addNodeInPlace(graph, { id: '3'})
+    const graph = createGraph<{}, { weight: number }>()
+    addNodeInPlace(graph, { id: '1' })
+    addNodeInPlace(graph, { id: '2' })
+    addNodeInPlace(graph, { id: '3' })
     addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
     addEdgeInPlace(graph, { from: '2', to: '3', weight: 10 })
 
@@ -37,11 +33,11 @@ describe('retrieveClosestPath', () => {
   })
 
   it('returns empty array if there is no path', () => {
-    const graph: Graph<{}, { weight: number }> = {}
+    const graph = createGraph<{}, { weight: number }>()
     addNodeInPlace(graph, { id: '1'})
     addNodeInPlace(graph, { id: '2'})
     addNodeInPlace(graph, { id: '3'})
-    addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
+    addEdgeInPlace(graph, { from: '1', to: '2', weight: 1 })
 
     const results = findClosestPaths(graph, {
       from: '1',
@@ -52,7 +48,7 @@ describe('retrieveClosestPath', () => {
   })
 
   it('throws an exception for not existing target', () => {
-    const graph: Graph<{}, { weight: number }> = {}
+    const graph = createGraph<{}, { weight: number }>()
     addNodeInPlace(graph, { id: '1'})
     addNodeInPlace(graph, { id: '2'})
     addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
@@ -64,7 +60,7 @@ describe('retrieveClosestPath', () => {
 
     expect(() => {
       retrieveClosestPath(results, { to: '3' })
-    }).toThrowError('Could not locate node with id = 3 in the given object.')
+    }).toThrowError('Could not locate node with id = 3 in the given results.')
   })
 
   it('detects loops', () => {

@@ -1,14 +1,29 @@
-import { ExtractEdgeData, NodeId, ClosestPathData } from '../types'
+import { Graph, NodeId, ClosestPathData } from '../types'
 import { getAllNodeIds } from '../getAllNodeIds'
 import { assertNodeExists } from '../assertNodeExists'
 import { getNeighboursOf } from '../getNeighboursOf'
 
-interface FindClosestPathsParams<Graph> {
+interface Params<EdgeData> {
   from: NodeId
-  getDistance(edge: ExtractEdgeData<Graph>): number
+  getDistance(edge: EdgeData): number
 }
 
-export function findClosestPaths<Graph>(graph: Graph, params: FindClosestPathsParams<Graph>) {
+/**
+ *
+ * @signature findClosestPaths(graph, params): ClosestPathResults
+ * @param {Graph} graph
+ * @param {Params} params
+ * @param {NodeId} params.from
+ * @param {(edge: EdgeData) => number} params.getDistance
+ * @return {ClosestPathResults}
+ */
+export function findClosestPaths<
+  NodeData,
+  EdgeData
+>(
+  graph: Graph<NodeData, EdgeData>,
+  params: Params<EdgeData>
+) {
   const { from, getDistance } = params
   assertNodeExists(graph, from)
 
@@ -31,7 +46,7 @@ export function findClosestPaths<Graph>(graph: Graph, params: FindClosestPathsPa
         continue
       }
 
-      const neighborDistance = getDistance(graph[currentNode].edges[nodeId])
+      const neighborDistance = getDistance(graph.nodes[currentNode].edges[nodeId].data)
 
       if (neighborDistance < data[nodeId].distance) {
         data[nodeId].distance = data[currentNode].distance + neighborDistance

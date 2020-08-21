@@ -1,31 +1,31 @@
-import {ExtractEdgeData, NodeId} from '../types'
+import {Graph, NodeId} from '../types'
 
-type EdgeDefinitionOf<Graph> = { from: NodeId, to: NodeId } & ExtractEdgeData<Graph>
+type EdgeDefinition<NodeData> = { from: NodeId, to: NodeId } & NodeData
 
 /**
+ * Adds a new edge  to the provided graph object by modifying it.
  *
- * @param graph Object to be updated
- * @param {NodeId} edge.from
- * @param {NodeId} edge.to
+ * @signature addEdgeInPlace(graph, node): void
+ * @param {Graph} graph Target graph object
+ * @param {EdgeDefinition} edge Edge definition
+ * @param {NodeId} edge.from Id of the source node
+ * @param {NodeId} edge.to Id of the target node
  * @param {object} edge.rest Custom properties of the edge
- *
  * @example
- *   type MyNodeData = {}
- *   type MyEdgeData = { weight: number }
- *
- *   const graph: Graph<MyNodeData, MyEdgeData> = {}
- *
- *   addNodeInPlace(graph, { id: '1' })
- *   addNodeInPlace(graph, { id: '2' })
- *
+ *   addEdgeInPlace(graph, { from: '1', to: '2' })
+ * @example
  *   addEdgeInPlace(graph, { from: '1', to: '2', weight: 10 })
  */
-export function addEdgeInPlace<Graph>(
-  graph: Graph,
-  edge: EdgeDefinitionOf<Graph>
+export function addEdgeInPlace<
+  NodeData,
+  EdgeData
+>(
+  graph: Graph<NodeData, EdgeData>,
+  edge: EdgeDefinition<EdgeData>
 ) {
   const { from, to, ...data } = edge
-  const node = graph[from]
-  node.edges[to] = { ...data }
-  return graph
+  const node = graph.nodes[from]
+  node.edges[to] = {
+    data: data as unknown as EdgeData
+  }
 }

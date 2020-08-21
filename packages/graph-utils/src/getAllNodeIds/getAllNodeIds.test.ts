@@ -1,8 +1,8 @@
-import { addNodeInPlace, getAllNodeIds, Graph } from '../index'
+import {addNodeInPlace, createGraph, getAllNodeIds} from '../index'
 
 describe('getAllNodeIds', () => {
-  it('returns a list of ids', () => {
-    const graph: Graph = {}
+  xit('returns a list of ids', () => {
+    const graph = createGraph()
     addNodeInPlace(graph, { id: '1'})
     addNodeInPlace(graph, { id: '2'})
 
