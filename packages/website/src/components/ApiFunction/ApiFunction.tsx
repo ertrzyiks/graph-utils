@@ -1,5 +1,4 @@
-import React, {useLayoutEffect, useRef} from 'react'
-import Prism from '../../vendor/prism'
+import React from 'react'
 import {
   Box,
   Card,
@@ -12,6 +11,7 @@ import {Link} from 'gatsby'
 import ApiFunctionParameters from '../ApiFunctionParametrs'
 import ApiFunctionExamples from '../ApiFunctionExamples'
 import ApiFunctionReturnType from '../ApiFunctionReturnType'
+import TypescriptCode from '../TypescriptCode'
 import { JsDoc } from '../../types'
 
 interface FunctionType {
@@ -26,18 +26,12 @@ interface FunctionType {
 }
 
 export default function ApiFunction({ data }: { data: FunctionType }) {
-  const ref = useRef<HTMLPreElement>(null)
-  useLayoutEffect(() => {
-    if (ref.current) {
-      Prism.highlightElement(ref.current)
-    }
-  }, [ref])
-
-
   return (
     <div id={data.slug} style={{ paddingTop: 64, marginTop: -64 }}>
-      <Card>
+      <Card raised>
         <CardContent>
+          <Typography variant='caption' color='textSecondary'>Function</Typography>
+
           <Typography variant='h4'>
             <MuiLink component={Link} to={`#${data.slug}`} underline='none' color='inherit'>
               {data.name}
@@ -50,13 +44,13 @@ export default function ApiFunction({ data }: { data: FunctionType }) {
             </Box>
           )}
 
-          <pre ref={ref} className='language-typescript'>{data.signature}</pre>
+          <TypescriptCode>{data.signature}</TypescriptCode>
 
           {data.jsDoc && (
             <div>
               <ApiFunctionParameters jsDoc={data.jsDoc} />
-              <ApiFunctionExamples jsDoc={data.jsDoc} />
               <ApiFunctionReturnType jsDoc={data.jsDoc} />
+              <ApiFunctionExamples jsDoc={data.jsDoc} />
             </div>
           )}
         </CardContent>

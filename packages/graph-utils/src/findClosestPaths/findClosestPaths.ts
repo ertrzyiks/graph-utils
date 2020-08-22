@@ -9,13 +9,22 @@ interface Params<EdgeData> {
 }
 
 /**
+ * Traverse graph and precalculate the closest paths between the source node (starting point) and all other nodes.
+ * Use `retrieveClosestPath` and `retrieveClosestPathDistance` to get the details out of the results.
  *
  * @signature findClosestPaths(graph, params): ClosestPathResults
  * @param {Graph} graph
  * @param {Params} params
- * @param {NodeId} params.from
+ * @param {NodeId} params.from The source node
  * @param {(edge: EdgeData) => number} params.getDistance
  * @return {ClosestPathResults}
+ *
+ * @example
+ *   const results = findClosestPaths(graph, {
+ *     from: '1',
+ *     getDistance: edge => edge.weight
+ *   })
+ *   const ids = retrieveClosestPath(results, { to: '2' })
  */
 export function findClosestPaths<
   NodeData,

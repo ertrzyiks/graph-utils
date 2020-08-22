@@ -1,7 +1,7 @@
 import {ClosestPathResults, NodeId} from '../types'
 
 /**
- * Ensures that the provided closest path results object contains information about the given node.
+ * Ensure that the provided closest path results object contains information about the given node.
  *
  * @signature assertResultForNodeExists(results, nodeId): void
  * @param {ClosestPathResults} results Object that should contain the node

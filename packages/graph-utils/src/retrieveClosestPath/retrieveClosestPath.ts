@@ -6,11 +6,18 @@ interface Params {
 
 /**
  *
- * @signature retrieveClosestPath(results, params)
+ * @signature retrieveClosestPath(results, params): NodeId[]
  * @param {ClosestPathResults} results
  * @param {Params} params
  * @param {NodeId} params.to
  * @return {NodeId[]}
+ *
+ * @example
+ *   const results = findClosestPaths(graph, {
+ *     from: '1',
+ *     getDistance: edge => edge.weight
+ *   })
+ *   const ids = retrieveClosestPath(results, { to: '2' })
  */
 export function retrieveClosestPath(results: ClosestPathResults, { to }: Params) {
   assertResultForNodeExists(results, to)
