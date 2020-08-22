@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import GitHubIcon from '@material-ui/icons/GitHub'
 import Button from '@material-ui/core/Button';
 import { Link as GatsbyLink } from "gatsby"
 
@@ -37,6 +38,7 @@ export default function LayoutAppBar({ title }: { title: string }) {
           <Button component={GatsbyLink} to='/'color="inherit">Home</Button>
           <Button component={GatsbyLink} to='/api'color="inherit">API</Button>
           <Button component={GatsbyLink} to='/examples' color="inherit">Examples</Button>
+          <Button component='a' href='https://github.com/ertrzyiks/graph-utils' color="inherit"><GitHubIcon/></Button>
         </Toolbar>
       </AppBar>
       <Toolbar />

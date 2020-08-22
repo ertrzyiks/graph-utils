@@ -1,11 +1,9 @@
 import {
   Box,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
   Typography
 } from '@material-ui/core'
@@ -26,11 +24,11 @@ const ApiFunctionReturnType = ({ jsDoc }: { jsDoc: JsDoc }) => {
 
   return (
     <Box my={2}>
-      <Box my={3}>
-        <Typography variant='h6'>Return value</Typography>
+      <Box mb={3}>
+        <Typography variant='body1'>Return value</Typography>
       </Box>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer>
+        <Table size='small'>
           <TableBody>
             <TableRow >
               <TableCell component="th" scope="row">{returnType.type}</TableCell>

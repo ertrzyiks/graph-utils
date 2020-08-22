@@ -1,6 +1,5 @@
 import {
   Box,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -29,7 +28,6 @@ const getNestedParamsOf = (jsDoc: JsDoc, paramName: string) => {
     .map(entry => {
       const name = entry.name?.replace(`${paramName}.`, '')
 
-      console.log(entry)
       return {
         ...entry,
         name: name === 'rest' ? '...rest' : name
@@ -50,12 +48,12 @@ const ApiFunctionParameters = ({ jsDoc }: { jsDoc: JsDoc }) => {
   }
 
   return (
-    <Box my={2}>
-      <Box my={3}>
-        <Typography variant='h6'>Parameters</Typography>
+    <Box my={3}>
+      <Box mt={5} mb={3}>
+        <Typography variant='body1'>Parameters</Typography>
       </Box>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer>
+        <Table size='small'>
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>

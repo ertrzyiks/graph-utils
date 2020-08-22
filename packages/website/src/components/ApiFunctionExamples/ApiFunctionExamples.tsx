@@ -14,12 +14,14 @@ const ApiFunctionExamples = ({ jsDoc }: { jsDoc: JsDoc }) => {
   }
 
   return (
-    <Box my={2}>
+    <Box my={3}>
       {examples.map((example, index) => (
-        <Box key={index} my={1}>
-          <Typography variant='h6'>Example {index + 1}</Typography>
+        <Box key={index}>
+          <Box mb={3}>
+            <Typography variant='body1'>Example {index + 1}</Typography>
+          </Box>
 
-          <pre>{example.comment}</pre>
+          <pre>{example.comment.trim()}</pre>
         </Box>
       ))}
     </Box>
