@@ -26,26 +26,13 @@ export default function ExamplePage({ data, pageContext, location }: ExamplePage
   const { example } = pageContext
   const Component = examples[example.slug]
 
-  return <Layout>
-    <Drawer
-      variant="permanent"
-      anchor="left"
-    >
-      <Toolbar />
-      <Divider />
-      <List>
-        <ListItem>
-          <ListItemText primary='Basic examples' />
-        </ListItem>
+  const drawerList = data.allExample.edges.map(({ node }: { node: any }) => (
+    <ListItem component={Link} to={`/examples/${node.slug}`} button key={node.slug} selected={node.slug === example.slug}>
+      <ListItemText primary={node.shortTitle} />
+    </ListItem>
+  ))
 
-        {data.allExample.edges.map(({ node }: { node: any }) => (
-          <ListItem component={Link} to={`/examples/${node.slug}`} button key={node.slug} selected={node.slug === example.slug}>
-            <ListItemText primary={node.shortTitle} />
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
-
+  return <Layout drawerList={drawerList}>
     <SEO title="Page two" />
 
     <ExampleContainer title={example.title} description={example.description} sourceCode={pageContext.example.mainContent}>
