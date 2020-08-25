@@ -35,7 +35,7 @@
     "vis-network": "^8.2.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "2.1.0"
   },
   "license": "0BSD",
   "scripts": {
