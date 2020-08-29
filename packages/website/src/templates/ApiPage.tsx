@@ -5,32 +5,10 @@ import { Box } from '@material-ui/core'
 import Layout from "../components/Layout"
 import ApiFunction from '../components/ApiFunction'
 import ApiType from '../components/ApiType'
-
-interface JsDoc {
-  comment: string
-  tags: {
-    comment: string
-    tagName: string
-    name: string
-  }[]
-}
-interface FunctionType {
-  name: string
-  slug: string
-  signature: string
-  params: {
-    name: string
-    type: string
-  }[]
-  jsDoc: JsDoc | null
-}
+import { LoadAllFunctionsQuery } from '../graphqlTypes'
 
 interface ExamplePageProps {
-  data: {
-    allFunction: {
-      nodes: FunctionType[]
-    }
-  }
+  data: LoadAllFunctionsQuery
 }
 
 export default function ApiPage({ data }: ExamplePageProps) {
