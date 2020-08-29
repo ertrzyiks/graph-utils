@@ -1,13 +1,14 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import SEO from "../components/seo"
-import { Drawer, List, ListItem, ListItemText, Divider, Toolbar } from '@material-ui/core'
+import { ListItem, ListItemText } from '@material-ui/core'
 import ExampleContainer from "../components/ExampleContainer/ExampleContainer"
 import Layout from "../components/Layout"
 import examples from '../examples'
+import { GetAllExamplesQuery } from '../graphqlTypes'
 
 interface ExamplePageProps {
-  data: any
+  data: GetAllExamplesQuery
   pageContext: {
     example: {
       slug: string

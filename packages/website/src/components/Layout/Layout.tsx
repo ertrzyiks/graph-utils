@@ -23,7 +23,8 @@ import {
   useTheme,
   ListItemText
 } from "@material-ui/core";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import { SiteTitleQueryQuery } from '../../graphqlTypes'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) =>
 
 const Layout = ({ children, drawerList }: { children: ReactNode, drawerList?: ReactNode }) => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
