@@ -49,7 +49,7 @@ export default function LayoutAppBar({ title, onMenuToggle }: { title: string, o
               <Button component={GatsbyLink} to='/' color="inherit">Home</Button>
               <Button component={GatsbyLink} to='/api' color="inherit">API</Button>
               <Button component={GatsbyLink} to='/examples' color="inherit">Examples</Button>
-              <Button component='a' href='https://github.com/ertrzyiks/graph-utils' color="inherit"><GitHubIcon/></Button>
+              <Button component='a' href='https://github.com/ertrzyiks/graph-utils' color="inherit" aria-label='Github repository'><GitHubIcon/></Button>
             </>
           ) : (
             <IconButton color="inherit" onClick={onMenuToggle}><MenuIcon /></IconButton>
