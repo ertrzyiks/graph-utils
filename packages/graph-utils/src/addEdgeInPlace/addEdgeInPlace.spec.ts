@@ -7,7 +7,7 @@ describe('addEdgeInPlace', () => {
     addNodeInPlace(graph, { id: '2'})
     addEdgeInPlace(graph, { from: '1', to: '2' })
 
-    expect(graph).toEqual({
+    expect(graph).toMatchObject({
       nodes: {
         1: {id: '1', data: {}, edges: {2: {data: {}}}},
         2: {id: '2', data: {}, edges: {}}
