@@ -1,7 +1,7 @@
 export type NodeId = string
 export type BaseData = Record<string, any>
 
-export type NodeType<NodeData, EdgeData> = {
+export type GraphNode<NodeData, EdgeData> = {
   id: NodeId
   data: NodeData
   edges: {
@@ -13,7 +13,7 @@ export type NodeType<NodeData, EdgeData> = {
 
 export type Graph<NodeData extends BaseData = {}, EdgeData extends BaseData = {}> = {
   nodes: {
-    [index: string]: NodeType<NodeData, EdgeData>
+    [index: string]: GraphNode<NodeData, EdgeData>
   }
 }
 

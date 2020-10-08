@@ -5,7 +5,7 @@ describe('addNodeInPlace', () => {
     const graph = createGraph()
     addNodeInPlace(graph, { id: '1'})
 
-    expect(graph).toEqual({
+    expect(graph).toMatchObject({
       nodes: {
         1: { id: '1', data: {}, edges: {} }
       }
@@ -17,7 +17,7 @@ describe('addNodeInPlace', () => {
     addNodeInPlace(graph, { id: '1' })
     addNodeInPlace(graph, { id: '2' })
 
-    expect(graph).toEqual({
+    expect(graph).toMatchObject({
       nodes: {
         1: { id: '1', data: {}, edges: {} },
         2: { id: '2', data: {}, edges: {} }

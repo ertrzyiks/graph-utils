@@ -3,7 +3,7 @@ import {Graph, NodeId} from '../types'
 type EdgeDefinition<NodeData> = { from: NodeId, to: NodeId } & NodeData
 
 /**
- * Add a new edge to the provided graph object by modifying it.
+ * Adds a new edge to the provided graph object by modifying it.
  *
  * @signature addEdgeInPlace(graph, edge): void
  * @param {Graph} graph Target graph object

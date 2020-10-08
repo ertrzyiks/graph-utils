@@ -1,7 +1,7 @@
 import {Graph} from "../types";
 
 /**
- * Get a list of ids of all nodes in the graph.
+ * Gets a list of ids of all nodes in the graph.
  *
  * @signature getAllNodeIds(graph): NodeId[]
  * @param {Graph} graph The target graph object

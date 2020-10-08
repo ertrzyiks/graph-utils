@@ -1,7 +1,7 @@
 import {NodeId, Graph as BaseGraph} from '../types'
 
 /**
- * Ensure that the provided graph object contains information about the given node.
+ * Ensures that the provided graph object contains information about the given node.
  *
  * @signature assertNodeExists(graph, nodeId): void
  * @param {Graph} graph Object that should contain the node

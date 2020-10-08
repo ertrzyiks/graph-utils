@@ -9,7 +9,7 @@ interface Params<EdgeData> {
 }
 
 /**
- * Traverse graph and precalculate the closest paths between the source node (starting point) and all other nodes.
+ * Traverses graph and precalculate the closest paths between the source node (starting point) and all other nodes.
  * Use `retrieveClosestPath` and `retrieveClosestPathDistance` to get the details out of the results.
  *
  * @signature findClosestPaths(graph, params): ClosestPathResults
