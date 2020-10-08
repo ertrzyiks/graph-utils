@@ -12,6 +12,7 @@
   "scripts": {
     "start": "lerna run start --scope website --stream",
     "build": "lerna run build --scope website --stream",
+    "test": "lerna run test --scope @ertrzyiks/graph-utils --stream",
     "codegen": "lerna run codegen --scope website --stream"
   }
 }
