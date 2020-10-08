@@ -38,7 +38,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "1.17.8",
     "prettier": "2.1.1",
-    "@graphql-codegen/typescript": "1.17.8",
+    "@graphql-codegen/typescript": "1.17.10",
     "@graphql-codegen/typescript-operations": "1.17.8"
   },
   "license": "0BSD",
