@@ -3,7 +3,7 @@ import {Graph, NodeId} from '../types'
 type NodeDefinition<NodeData> = { id: NodeId } & NodeData
 
 /**
- * Add a new node to the provided graph object by modifying it.
+ * Adds a new node to the provided graph object by modifying it.
  *
  * @signature addNodeInPlace(graph, node): void
  * @param {Graph} graph Target graph object

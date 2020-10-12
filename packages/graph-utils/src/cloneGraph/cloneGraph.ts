@@ -1,7 +1,7 @@
 import { Graph } from '../'
 
 /**
- * Create a copy the graph. The new graph contains all the node and edges from the original graph.
+ * Creates a copy the graph. The new graph contains all the node and edges from the original graph.
  *
  * @signature cloneGraph(graph): Graph
  * @param {Graph} graph Target graph object to copy

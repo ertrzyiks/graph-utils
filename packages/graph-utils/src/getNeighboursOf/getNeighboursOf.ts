@@ -2,7 +2,7 @@ import { NodeId, Graph } from '../types'
 import { assertNodeExists } from '../assertNodeExists/assertNodeExists'
 
 /**
- * Get a list of ids of all nodes in the graph that are neighbours of the target node.
+ * Gets a list of ids of all nodes in the graph that are neighbours of the target node.
  * To consider a node as a neighbour of the target node there must be an edge from the target node to the node.
  *
  * @signature getNeighboursOf(graph, nodeId): NodeId[]

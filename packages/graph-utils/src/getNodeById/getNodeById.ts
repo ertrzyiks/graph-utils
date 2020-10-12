@@ -1,7 +1,7 @@
 import { Graph, NodeId, assertNodeExists} from '../'
 
 /**
- * Create a copy the graph. The new graph contains all the node and edges from the original graph.
+ * Gets a single node of the graph by its id.
  *
  * @signature getNodeById(graph, id): GraphNode
  * @param {Graph} graph Target graph object

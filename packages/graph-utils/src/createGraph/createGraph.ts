@@ -1,7 +1,7 @@
-import { BaseData, Graph } from '../types'
+import { BaseData, Graph } from '../'
 
 /**
- * Initialize an empty graph object without nodes and edges. The two generic parameters allows to constraint the
+ * Initializes an empty graph object without nodes and edges. The two generic parameters allows to constraint the
  * type of custom properties of nodes and edges. Those constraints are respected by other functions.
  *
  * @signature createGraph(): Graph
@@ -27,5 +27,7 @@ export function createGraph<
   NodeData extends BaseData = {},
   EdgeData extends BaseData = {}
 >(): Graph<NodeData, EdgeData> {
-  return { nodes: {} }
+  return {
+    nodes: {}
+  }
 }
