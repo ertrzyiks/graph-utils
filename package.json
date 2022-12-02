@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "lerna": "^6.1.0"
+    "lerna": "6.1.0"
   },
   "scripts": {
     "start": "lerna run start --scope website --stream",
