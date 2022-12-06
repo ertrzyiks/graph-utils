@@ -7,7 +7,7 @@
     ],
     "packageRules": [
         {
-            "packagePatterns": [
+            "matchPackagePatterns": [
                 "*"
             ],
             "excludePackagePatterns": [
