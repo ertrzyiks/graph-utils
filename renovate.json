@@ -1,0 +1,19 @@
+{
+    "extends": [
+        "config:base"
+    ],
+    "enabledManagers": [
+        "npm"
+    ],
+    "packageRules": [
+        {
+            "packagePatterns": [
+                "*"
+            ],
+            "excludePackagePatterns": [
+                "lerna"
+            ],
+            "enabled": false
+        }
+    ]
+}
