@@ -2,6 +2,11 @@
     "extends": [
         "config:base"
     ],
+    "repositories": [
+        {
+            "repository": "ertrzyiks/graphl-utils"
+        }
+    ],
     "enabledManagers": [
         "npm"
     ],
