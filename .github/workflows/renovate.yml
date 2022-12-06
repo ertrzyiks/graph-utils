@@ -6,7 +6,7 @@ on:
 jobs:
   renovate:
     runs-on: ubuntu-latest
-     permissions:
+    permissions:
       contents: write  # for Git to git push
       pull-requests: write  # for repo-sync/pull-request to create pull requests
     steps:
