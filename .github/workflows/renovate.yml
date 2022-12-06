@@ -6,9 +6,6 @@ on:
 jobs:
   renovate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # for Git to git push
-      pull-requests: write  # for repo-sync/pull-request to create pull requests
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
@@ -16,6 +13,6 @@ jobs:
         uses: renovatebot/github-action@v34.50.1
         with:
           configurationFile: renovate.json
-          token: ${{ github.token }}
+          token: ${{ secrets.PAT }}
         env:
           LOG_LEVEL: 'debug'
