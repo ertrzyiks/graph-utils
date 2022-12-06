@@ -4,7 +4,7 @@
     ],
     "repositories": [
         {
-            "repository": "ertrzyiks/graphl-utils"
+            "repository": "ertrzyiks/graph-utils"
         }
     ],
     "enabledManagers": [
